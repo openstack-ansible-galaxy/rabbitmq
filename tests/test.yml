@@ -3,6 +3,11 @@
 - hosts: all
   become: True
 
+  tasks:
+    - name: Update local apt cache
+      apt:
+        update_cache: True
+
   roles:
     - role: openstack-repo
       when: ansible_os_family == 'RedHat'
