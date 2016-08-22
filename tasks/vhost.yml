@@ -13,7 +13,8 @@
     user: '{{ item.user }}'
     password: '{{ item.password }}'
     vhost: '{{ item.vhost | default("/") }}'
-    node: '{{ item.node | default("rabbit") }}'
+    # Disabled due to ansible bug https://github.com/ansible/ansible-modules-extras/pull/2310
+    # node: '{{ item.node | default("rabbit") }}'
     tags: '{{ (item.tags | default("")) | join(",") }}'
     configure_priv: '{{ item.configure_priv | default(".*") }}'
     read_priv: '{{ item.read_priv | default(".*") }}'
