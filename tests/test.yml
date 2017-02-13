@@ -5,6 +5,11 @@
 - hosts: all
   become: True
 
+  tasks:
+    - name: Update local apt cache
+      apt:
+        update_cache: True
+
   roles:
     - role: rabbitmq
       rabbitmq_plugins:
