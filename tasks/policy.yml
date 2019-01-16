@@ -7,4 +7,5 @@
     vhost: '{{ item.vhost | default("/") }}'
     state: '{{ item.state | default("present") }}'
     tags: '{{ item.tags | default({}) }}'
+    apply_to: '{{ item.apply_to | default("all") }}'
   with_items: '{{ rabbitmq_policies }}'
