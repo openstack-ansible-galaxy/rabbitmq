@@ -24,4 +24,3 @@
       when:
         - ansible_selinux.status == 'enabled'
         - ansible_virtualization_type != 'docker'
-

@@ -16,7 +16,7 @@ Use Ansible galaxy to install this playbook:
 
 ## Supported system
 
-Ubuntu 14.04 (Trusty), Ubuntu 16.04 (Xenial) and CentOS 7
+Ubuntu 14.04 (Trusty), Ubuntu 16.04 (Xenial), Ubuntu 18.04 (Bionic) and CentOS 7.x
 
 ## Role Variables
 
