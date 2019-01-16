@@ -14,7 +14,8 @@
 # Erlang version) must be taken care outside of this role
 rabbitmq_use_repo: False
 rebbitmq_repo_rpm: centos-release-openstack-{{ openstack_release | default("ocata") }}
-rabbitmq_repo_deb: deb http://ubuntu-cloud.archive.canonical.com/ubuntu {{ ubuntu_cloud_dist | default("trusty-updates") }}/{{ openstack_release | default("mitaka") }} main
+rebbitmq_ost_ubuntu_rel: '{{ ubuntu_cloud_dist | default("trusty-updates") }}/{{ openstack_release | default("mitaka") }}'
+rabbitmq_repo_deb: deb http://ubuntu-cloud.archive.canonical.com/ubuntu {{ rebbitmq_ost_ubuntu_rel }} main
 
 # Plugins to enabled
 rabbitmq_plugins: []
