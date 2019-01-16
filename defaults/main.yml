@@ -1,5 +1,22 @@
 ---
 
+# Repository setup
+#
+# By default, RabbitMQ repository setup will be skipped, and default distro
+# package(s) will deployed, if any. For specific RabbitMQ repository, please
+# set 'rabbitmq_use_repo'  to True, which will point to usual OpenStack distro
+# repos. For more control over which particular RabbitMQ repository is to be
+# used, set 'rabbitmq_repo_rpm' to; for example:
+#   https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.10/rabbitmq-server-3.7.10-1.el7.noarch.rpm
+# or 'rabbitmq_repo_deb' to; for example:
+#   deb https://dl.bintray.com/rabbitmq-erlang/debian xenial main
+# Note that in this case the repository key access or other dependencies (such as
+# Erlang version) must be taken care outside of this role
+rabbitmq_use_repo: False
+rebbitmq_repo_rpm: centos-release-openstack-{{ openstack_release | default("ocata") }}
+rebbitmq_ost_ubuntu_rel: '{{ ubuntu_cloud_dist | default("xenial-updates") }}/{{ openstack_release | default("ocata") }}'
+rabbitmq_repo_deb: deb http://ubuntu-cloud.archive.canonical.com/ubuntu {{ rebbitmq_ost_ubuntu_rel }} main
+
 # Plugins to enabled
 rabbitmq_plugins: []
 

@@ -22,8 +22,5 @@
         name: 'httpd_t'
         permissive: True
       when:
-        - ansible_selinux
+        - ansible_selinux.status == 'enabled'
         - ansible_virtualization_type != 'docker'
-
-  roles:
-    - openstack-repo

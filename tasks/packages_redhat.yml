@@ -1,6 +1,15 @@
 ---
 
+- name: Install OpenStack {{ rebbitmq_repo_rpm }} release package
+  yum:
+    name: '{{ rebbitmq_repo_rpm }}'
+    state: present
+    update_cache: yes
+  when: rabbitmq_use_repo
+
 - name: Install rabbitmq-server
   yum:
     name: 'rabbitmq-server'
-    state: present
+    state: latest
+    update_cache: yes
+  notify: Reloaad systemd services and restart RabbitMQ
