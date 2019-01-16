@@ -1,6 +1,21 @@
 ---
 
+- name: Install software-properties-common
+  apt:
+    name: software-properties-common
+    state: latest
+    update_cache: yes
+  when: rabbitmq_use_repo
+
+- name: Set up openstack repository
+  apt_repository:
+    repo: '{{ rabbitmq_repo_deb }}'
+    state: present
+  when: rabbitmq_use_repo
+
 - name: Install rabbitmq-server
   apt:
     name: 'rabbitmq-server'
-    state: present
+    state: latest
+    update_cache: yes
+  notify: Reloaad systemd services and restart RabbitMQ

@@ -1,9 +1,12 @@
 ---
 
-- include: test_common.yml
+- import_playbook: test_common.yml
 
 - hosts: all
   become: True
+
+  vars:
+    rabbitmq_use_repo: True
 
   roles:
     - role: rabbitmq

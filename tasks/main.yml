@@ -1,20 +1,20 @@
 ---
 
-- include: packages_redhat.yml
+- include_tasks: packages_redhat.yml
   when: ansible_os_family == 'RedHat'
 
-- include: packages_debian.yml
+- include_tasks: packages_debian.yml
   when: ansible_os_family == 'Debian'
 
-- include: configuration.yml
+- include_tasks: configuration.yml
 
-- include: services.yml
+- include_tasks: services.yml
 
 - meta: flush_handlers
 
-- include: plugins.yml
-- include: vhost.yml
-- include: user.yml
-- include: policy.yml
+- include_tasks: plugins.yml
+- include_tasks: vhost.yml
+- include_tasks: user.yml
+- include_tasks: policy.yml
 
-- include: sanitycheck.yml
+- include_tasks: sanitycheck.yml
