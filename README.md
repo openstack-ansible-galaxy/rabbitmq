@@ -1,7 +1,7 @@
 Rabbitmq 
 ========
 
-[![Build Status](https://travis-ci.org/abelboldu/ansible-rabbitmq.svg?branch=master)](https://travis-ci.org/abelboldu/ansible-rabbitmq) on master branch
+[![Build Status](https://travis-ci.org/openstack-ansible-galaxy/rabbitmq.svg?branch=master)](https://travis-ci.org/openstack-ansible-galaxy/rabbitmq#) @ master
 
 Playbook that installs and configures RabbitMQ message broker.
 
