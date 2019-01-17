@@ -7,7 +7,9 @@
     mode: 0644
     owner: 'rabbitmq'
     src: 'rabbitmq.config.j2'
-  notify: Restart RabbitMQ server
+  notify:
+    - Restart RabbitMQ server
+    - Force stop node so it can join the cluster
 
 - name: RabbitMQ Environment-specific configuration
   template:
@@ -16,7 +18,9 @@
     mode: 0644
     owner: 'rabbitmq'
     src: 'rabbitmq-env.conf.j2'
-  notify: Restart RabbitMQ server
+  notify:
+    - Restart RabbitMQ server
+    - Force stop node so it can join the cluster
   when: rabbitmq_conf_env is defined
 
 - name: RabbitMQ set Erlang cookie
@@ -26,7 +30,9 @@
     owner: 'rabbitmq'
     mode: 0400
     src: 'erlang.cookie.j2'
-  notify: Restart RabbitMQ server
+  notify:
+    - Restart RabbitMQ server
+    - Force stop node so it can join the cluster
   when: rabbitmq_cluster and rabbitmq_erlang_cookie is defined
 
 - name: Set up max file-descriptor limits in RabbitMQ systemd service
@@ -38,3 +44,5 @@
     value: '{{ rabbitmq_fd_limit }}'
   notify: Reloaad systemd services and restart RabbitMQ
   when: hostvars[inventory_hostname]['ansible_service_mgr'] == 'systemd' and rabbitmq_fd_limit is defined
+
+- meta: flush_handlers

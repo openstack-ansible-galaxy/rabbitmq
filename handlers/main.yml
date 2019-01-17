@@ -1,12 +1,26 @@
 ---
 
-- name: Restart RabbitMQ server
-  service:
-    name: 'rabbitmq-server'
-    state: restarted
-
 - name: Reloaad systemd services and restart RabbitMQ
   systemd:
     name: 'rabbitmq-server'
     state: restarted
     daemon_reload: yes
+
+- name: Restart RabbitMQ server
+  service:
+    name: 'rabbitmq-server'
+    state: restarted
+
+- name: Force stop node so it can join the cluster
+  command: rabbitmqctl stop_app
+  when: rabbitmq_cluster
+  notify: Reset RabbitMQ cluster node
+
+- name: Reset RabbitMQ cluster node
+  command: rabbitmqctl reset
+  when: rabbitmq_cluster
+  notify: Start RabbitMQ cluster node
+
+- name: Start RabbitMQ cluster node
+  command: rabbitmqctl start_app
+  when: rabbitmq_cluster

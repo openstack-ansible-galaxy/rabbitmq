@@ -7,11 +7,6 @@
   when: ansible_os_family == 'Debian'
 
 - include_tasks: configuration.yml
-
-- include_tasks: services.yml
-
-- meta: flush_handlers
-
 - include_tasks: plugins.yml
 - include_tasks: vhost.yml
 - include_tasks: user.yml
