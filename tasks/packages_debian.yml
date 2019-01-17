@@ -1,8 +1,10 @@
 ---
 
-- name: Install software-properties-common
+- name: Install package dependencies
   apt:
-    name: software-properties-common
+    name:
+     - software-properties-common
+     - ubuntu-cloud-keyring
     state: latest
     update_cache: yes
   when: rabbitmq_use_repo
@@ -18,4 +20,3 @@
     name: 'rabbitmq-server'
     state: latest
     update_cache: yes
-  notify: Reloaad systemd services and restart RabbitMQ
