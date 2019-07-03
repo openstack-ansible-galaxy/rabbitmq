@@ -1,0 +1,13 @@
+---
+
+- name: Manage RabbitMQ plugins parameters
+  rabbitmq_parameter:
+    component: '{{ item.component }}'
+    name: '{{ item.name }}'
+    node: '{{ item.node }}'
+    # While specifying value leave space between ' and {:
+    # https://github.com/ansible/ansible/issues/43027
+    value: '{{ item.value }}'
+    vhost: '{{ item.vhost }}'
+    state: '{{ item.state }}'
+  with_items: '{{ rabbitmq_parameters }}'
