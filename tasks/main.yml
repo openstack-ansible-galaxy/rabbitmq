@@ -11,5 +11,6 @@
 - include_tasks: vhost.yml
 - include_tasks: user.yml
 - include_tasks: policy.yml
+- include_tasks: parameters.yml
 
 - include_tasks: sanitycheck.yml

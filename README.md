@@ -105,6 +105,25 @@ rabbitmq_policies:
     state:    present               # Optional, defaults to "present"
 ```
 
+### Plugins Parameters
+
+`rabbitmq_parameters` - list of parameters for different plugins to be
+created (or removed if `state: absent` is set).
+Example on defining the parameters configuration:
+
+```yaml
+rabbitmq_parameters:
+  - component: shovel   # default to None
+    name: designate-notifications-info    # default to None
+    value: ' {value} '  # Since this gets converted in JSON please leave some
+                        # space between single quote (') and {
+                        # https://github.com/ansible/ansible/issues/43027
+                        # default to None
+    vhost: /            # default to /
+    node: rabbit        # default to rabbit
+    state: present      # Optional, defaults to "present"
+```
+
 ### Cluster setup
 
 This role supports setting up a simple cluster by adding all the nodes in a

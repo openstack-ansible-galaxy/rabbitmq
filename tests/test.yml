@@ -29,3 +29,10 @@
             ha-mode: all
             ha-sync-mode: automatic
           state: present
+      rabbitmq_parameters:
+        - component: shovel
+          name: shovel-param
+          value: ' {value } '
+          node: rabbit
+          vhost: '/'
+          state: present
